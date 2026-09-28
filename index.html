@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwello - Inicio de Sesión</title>
+    <!-- Aquí vinculo los estilos que generé con Tailwind CSS -->
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+<body class="bg-gray-50 h-screen flex items-center justify-center relative">
+
+    <!-- Acomodo el logo de mi app arriba a la izquierda -->
+    <div class="absolute top-8 left-10 flex items-center gap-2">
+        <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+        </svg>
+        <span class="text-2xl font-bold text-blue-950">Dwello</span>
+    </div>
+
+    <!-- Creo la caja blanca central donde estructuro todo el formulario de login -->
+    <main class="bg-white p-10 rounded-2xl shadow-lg w-full max-w-[420px]">
+        
+        <h1 class="text-2xl font-bold text-center text-slate-900 mb-1">¡Bienvenido!</h1>
+        <p class="text-center text-gray-500 text-sm mb-6">Ingresa a tu cuenta para continuar</p>
+        
+        <!-- Pongo estos botones para que el usuario elija si entra como cliente o como agente inmobiliario -->
+        <div class="flex bg-gray-100 p-1 rounded-lg mb-6">
+            <button class="w-1/2 bg-blue-950 text-white text-sm font-semibold py-2 rounded-md shadow">
+                Comprador
+            </button>
+            <button class="w-1/2 text-gray-500 text-sm font-semibold py-2 rounded-md">
+                Broker
+            </button>
+        </div>
+
+        <!-- Armo los campos para que el usuario escriba sus datos de acceso -->
+        <form>
+            <div class="mb-4">
+                <label class="block text-gray-500 text-sm mb-1">Correo electrónico</label>
+                <input type="email" id="correoUser" placeholder="tu@correo.com" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-700 outline-none focus:border-blue-950 focus:ring-1 focus:ring-blue-950 transition-colors">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-500 text-sm mb-1">Contraseña</label>
+                <div class="relative">
+                    <input type="password" id="passwordField" placeholder="••••••••••••••••" class="w-full border border-gray-300 rounded-md px-3 py-2 pr-10 text-sm text-gray-700 outline-none focus:border-blue-950 focus:ring-1 focus:ring-blue-950 transition-colors">
+                    
+                    <!-- Hago este botón con forma de ojito para mostrar/ocultar la contraseña -->
+                    <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 outline-none">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18M15.364 8.636l-.364-.364a10.05 10.05 0 00-3-.972c-4.478 0-8.268 2.943-9.543 7a9.97 9.97 0 001.563 3.029m5.858.908a3 3 0 004.243-4.243M9.878 9.878l4.242 4.242"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Coloco mi botón principal para validar y entrar a la cuenta -->
+            <button type="button" onclick="iniciarSesion()" class="w-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold py-2.5 rounded-md mb-6 flex justify-center items-center gap-2 transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                </svg>
+                Iniciar sesión
+            </button>
+        </form>
+
+        <div class="text-center mb-1">
+            <a href="#" class="text-blue-950 font-bold text-sm hover:underline">Olvidé mi contraseña</a>
+        </div>
+        <div class="text-center text-sm text-gray-500 mb-6">
+            ¿No tienes cuenta? <a href="#" class="text-orange-500 font-semibold hover:underline">Regístrate aquí</a>
+        </div>
+        <p class="text-center text-[10px] text-gray-400 px-6">
+            Al continuar estás aceptando los <a href="#" class="text-orange-500 hover:underline">Términos y condiciones</a> y el <a href="#" class="text-orange-500 hover:underline">Aviso de Privacidad</a>
+        </p>
+        
+    </main>
+
+    <!-- Scripts de la página -->
+    <script>
+        // Hago esta función para cambiar el tipo de campo y poder ver u ocultar la contraseña
+        function togglePassword() {
+            let input = document.getElementById('passwordField');
+            if (input.type === 'password') {
+                input.type = 'text'; 
+            } else {
+                input.type = 'password'; 
+            }
+        }
+
+        // Con esta función simulo el proceso de autenticación al presionar el botón de inicio de sesión
+        function iniciarSesion() {
+            // Guardo el correo que el usuario escribió (Entrada)
+            let email = document.getElementById('correoUser').value;
+            
+            // Valido que el campo no esté vacío para procesar la entrada
+            if(email !== "") {
+                // Muestro una alerta de éxito (Salida dinámica)
+                alert("Autenticación exitosa. Bienvenido, " + email + ".");
+                // Redirijo al usuario a la pantalla del dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                // Si está vacío, pido que llenen los datos
+                alert("Por favor, ingresa un correo electrónico válido.");
+            }
+        }
+    </script>
+</body>
+</html>

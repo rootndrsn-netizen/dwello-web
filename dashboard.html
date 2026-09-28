@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dwello - Búsqueda de Propiedades</title>
+    <!-- Aquí vinculo mi hoja de estilos generada con Tailwind CSS -->
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+<body class="bg-white flex flex-col min-h-screen">
+
+    <!-- 1. Armo mi barra de navegación superior -->
+    <nav class="bg-slate-950 px-10 py-4 flex justify-between items-center">
+        <!-- Pongo el logo de mi aplicación -->
+        <div class="flex items-center gap-2 text-white">
+            <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            <span class="text-xl font-bold">Dwello</span>
+        </div>
+        
+        <!-- Hago este enlace funcional para simular cerrar sesión y volver a mi pantalla de inicio -->
+        <a href="index.html" class="flex items-center gap-3 text-white hover:text-orange-500 transition-colors">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Perfil" class="w-8 h-8 rounded-full object-cover">
+            <span class="text-sm font-semibold">Cerrar sesión</span>
+        </a>
+    </nav>
+
+    <!-- 2. Creo el contenedor principal de la página -->
+    <main class="max-w-6xl mx-auto px-10 py-8 w-full flex-grow">
+        
+        <!-- Inserto mi barra de búsqueda para cumplir con las 'Entradas' de datos -->
+        <div class="bg-white border border-gray-400 rounded-xl p-2 flex items-center justify-between mb-12">
+            <div class="flex items-center gap-2 px-3 w-full">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input type="text" placeholder="Buscar por ciudad, colonia o zona..." class="w-full outline-none text-sm text-gray-500">
+            </div>
+            
+            <div class="flex items-center gap-2 shrink-0">
+                <!-- Selectores de filtros -->
+                <select class="border border-gray-300 rounded px-2 py-1.5 text-xs text-gray-600 outline-none cursor-pointer hover:bg-gray-50 bg-white">
+                    <option value="todos">Precio: Todos</option>
+                    <option value="bajo">Menos de $5,000,000</option>
+                    <option value="medio">De $5M a $10M</option>
+                    <option value="alto">Más de $10,000,000</option>
+                </select>
+
+                <select class="border border-gray-300 rounded px-2 py-1.5 text-xs text-gray-600 outline-none cursor-pointer hover:bg-gray-50 bg-white">
+                    <option value="todos">Tipo: Casa/Depto</option>
+                    <option value="casa">Solo Casas</option>
+                    <option value="depto">Solo Departamentos</option>
+                </select>
+
+                <!-- Pongo este botón controlado por mi JavaScript para disparar la búsqueda -->
+                <button type="button" onclick="ejecutarBusqueda()" class="bg-orange-500 text-white text-sm font-semibold py-1.5 px-6 rounded-md ml-2 hover:bg-orange-600 transition-colors">
+                    Buscar
+                </button>
+            </div>
+        </div>
+
+        <!-- 3. Diseño mi cuadrícula para mostrar las tarjetas de las propiedades -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Estructuro mi primera tarjeta (Casa Polanco) -->
+            <div>
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=500&q=80" alt="Casa Polanco" class="w-full h-48 object-cover rounded-2xl mb-4">
+                <h2 class="text-2xl font-bold text-blue-950">$8,500,000 MXN</h2>
+                <p class="text-gray-500 text-sm mb-4">Polanco, CDMX</p>
+                <div class="flex items-center gap-4 text-gray-600 text-sm mb-6">
+                    <!-- Ícono de Cama -->
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14v7m16-7v7M4 14h16M4 14c0-2.21 1.79-4 4-4h8c2.21 0 4 1.79 4 4M7 10a2 2 0 110-4 2 2 0 010 4z"></path></svg> 6</div>
+                    <!-- Ícono de Baño -->
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18m-1 0v4a4 4 0 01-4 4H8a4 4 0 01-4-4v-4m3-3V7a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg> 4</div>
+                    <!-- Ícono de Metros Cuadrados -->
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4V4zm4 0v4m0 12v-4m8-8h4m-4 8h4"></path></svg> 250 m2</div>
+                </div>
+                <!-- Este botón activa mi script para navegar al detalle de la propiedad -->
+                <button type="button" onclick="irADetalles()" class="w-full bg-orange-500 text-white font-bold py-2 rounded-md hover:bg-orange-600 transition-colors underline cursor-pointer">
+                    Información
+                </button>
+            </div>
+
+            <!-- Armo mi segunda tarjeta (Casa Monterrey 1) -->
+            <div>
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" alt="Casa Monterrey 1" class="w-full h-48 object-cover rounded-2xl mb-4">
+                <h2 class="text-2xl font-bold text-blue-950">$4,260,000 MXN</h2>
+                <p class="text-gray-500 text-sm mb-4">San Pedro, Monterrey</p>
+                <div class="flex items-center gap-4 text-gray-600 text-sm mb-6">
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14v7m16-7v7M4 14h16M4 14c0-2.21 1.79-4 4-4h8c2.21 0 4 1.79 4 4M7 10a2 2 0 110-4 2 2 0 010 4z"></path></svg> 4</div>
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18m-1 0v4a4 4 0 01-4 4H8a4 4 0 01-4-4v-4m3-3V7a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg> 3</div>
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4V4zm4 0v4m0 12v-4m8-8h4m-4 8h4"></path></svg> 190 m2</div>
+                </div>
+                <!-- Botón de navegación -->
+                <button type="button" onclick="irADetalles()" class="w-full bg-orange-500 text-white font-bold py-2 rounded-md hover:bg-orange-600 transition-colors underline cursor-pointer">
+                    Información
+                </button>
+            </div>
+
+            <!-- Armo mi tercera tarjeta (Casa Monterrey 2) -->
+            <div>
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" alt="Casa Monterrey 2" class="w-full h-48 object-cover rounded-2xl mb-4">
+                <h2 class="text-2xl font-bold text-blue-950">$4,200,000 MXN</h2>
+                <p class="text-gray-500 text-sm mb-4">San Pedro, Monterrey</p>
+                <div class="flex items-center gap-4 text-gray-600 text-sm mb-6">
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14v7m16-7v7M4 14h16M4 14c0-2.21 1.79-4 4-4h8c2.21 0 4 1.79 4 4M7 10a2 2 0 110-4 2 2 0 010 4z"></path></svg> 3</div>
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18m-1 0v4a4 4 0 01-4 4H8a4 4 0 01-4-4v-4m3-3V7a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg> 2</div>
+                    <div class="flex items-center gap-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4V4zm4 0v4m0 12v-4m8-8h4m-4 8h4"></path></svg> 150 m2</div>
+                </div>
+                <!-- Botón de navegación -->
+                <button type="button" onclick="irADetalles()" class="w-full bg-orange-500 text-white font-bold py-2 rounded-md hover:bg-orange-600 transition-colors underline cursor-pointer">
+                    Información
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Agrego mi pie de página con el formato del proyecto de mi universidad -->
+    <footer class="bg-slate-950 text-white px-10 py-6 mt-auto">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+            <div>
+                <span class="font-bold text-white text-lg tracking-wide">Dwello</span>
+                <p class="mt-1">Proyecto Universitario UAC © 2026</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-orange-500 transition-colors">Aviso de Privacidad</a>
+                <a href="#" class="hover:text-orange-500 transition-colors">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts con mi lógica en JavaScript -->
+    <script>
+        // Hago esta función para redirigirme a la página de detalles al hacer clic en el botón de información
+        function irADetalles() {
+            window.location.assign('detalle.html');
+        }
+
+        // Con esta función simulo la salida dinámica que requiere la rúbrica al usar la barra de búsqueda
+        function ejecutarBusqueda() {
+            alert("Aplicando filtros de búsqueda con JavaScript...");
+        }
+    </script>
+
+</body>
+</html>

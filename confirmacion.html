@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dwello - Confirmar Solicitud</title>
+    <!-- Vinculo mi hoja de estilos de Tailwind CSS -->
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
+
+    <!-- Armo mi barra de navegación superior -->
+    <nav class="bg-slate-950 px-10 py-4 flex justify-between items-center shadow-md">
+        <!-- Pongo este enlace para poder regresar al catálogo -->
+        <a href="dashboard.html" class="flex items-center gap-2 text-white hover:text-orange-500 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            <span class="text-xl font-bold tracking-tight">Dwello</span>
+        </a>
+        
+        <!-- Agrego el acceso a mi perfil -->
+        <a href="index.html" class="flex items-center gap-3 text-white hover:text-orange-500 transition-colors group">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Perfil" class="w-9 h-9 rounded-full object-cover border-2 border-transparent group-hover:border-orange-500 transition-all">
+            <span class="text-sm font-semibold hidden md:block">Mi Cuenta</span>
+        </a>
+    </nav>
+
+    <!-- Agrego el contenedor principal para centrar mi formulario -->
+    <main class="flex-grow flex items-center justify-center p-6 md:p-10">
+        
+        <!-- Construyo la tarjeta blanca principal -->
+        <div class="bg-white rounded-3xl shadow-xl max-w-4xl w-full p-8 md:p-12 border border-gray-100">
+            
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-blue-950 mb-2 tracking-tight">Confirmar Solicitud de Cita</h2>
+                <p class="text-gray-500 text-sm font-medium">Confirma la información y selecciona tu horario ideal. Un agente te contactará pronto</p>
+            </div>
+
+            <!-- Pongo una tarjeta flotante con el resumen de la propiedad -->
+            <div class="flex justify-center mb-10">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-3 flex items-center gap-5 w-full max-w-sm">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=150&q=80" alt="Casa" class="w-24 h-16 object-cover rounded-xl">
+                    <div class="h-10 w-px bg-gray-300"></div>
+                    <div>
+                        <h3 class="text-xl font-black text-blue-950 leading-none mb-1">$8,500,000 MXN</h3>
+                        <p class="text-xs text-gray-500 font-medium">Polanco, CDMX</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aquí diseño mi formulario para capturar las entradas del usuario -->
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                    
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-900 mb-1.5">Nombre Completo</label>
+                            <input type="text" id="nombreCliente" placeholder="Ej. Juan Pérez" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-950 focus:ring-1 focus:ring-blue-950 shadow-sm text-gray-700">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-900 mb-1.5">Correo electrónico</label>
+                            <input type="email" id="correoCliente" placeholder="tu@correo.com" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-950 focus:ring-1 focus:ring-blue-950 shadow-sm text-gray-700">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-900 mb-1.5">Teléfono de contacto</label>
+                            <input type="tel" id="telCliente" placeholder="5512345678" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-950 focus:ring-1 focus:ring-blue-950 shadow-sm text-gray-700">
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-900 mb-1.5">Selecciona una Fecha</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <input type="date" id="fechaCliente" class="w-full border border-gray-300 rounded-lg pl-9 pr-4 py-2.5 text-sm outline-none focus:border-blue-950 focus:ring-1 focus:ring-blue-950 shadow-sm text-gray-700 cursor-pointer">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-900 mb-1.5">Horarios disponibles</label>
+                            <select id="horarioCliente" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-950 focus:ring-1 focus:ring-blue-950 shadow-sm text-gray-700 bg-white cursor-pointer">
+                                <option value="" disabled selected>Selecciona una opción...</option>
+                                <option value="10:00 AM - 11:30 AM">10:00 AM - 11:30 AM</option>
+                                <option value="12:00 PM - 01:30 PM">12:00 PM - 01:30 PM</option>
+                                <option value="04:00 PM - 05:30 PM">04:00 PM - 05:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preparo este mensaje de error y lo mantengo oculto por defecto -->
+                <p id="mensajeError" class="text-red-500 text-sm font-bold text-center hidden mt-4">Por favor, llena todos tus datos de contacto.</p>
+
+                <!-- Coloco mi botón principal para validar el formulario -->
+                <div class="mt-8 flex justify-center pt-2">
+                    <button type="button" onclick="procesarSolicitud(event)" class="w-full md:w-2/3 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 px-8 rounded-xl shadow-md transition-all text-lg cursor-pointer">
+                        Confirmar Solicitud de Cita
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Creo mi ventana modal personalizada para la alerta de éxito -->
+    <!-- Por defecto la mantengo oculta con "hidden", y con mi JS la cambio a "flex" -->
+    <div id="miModalPersonalizado" class="fixed inset-0 bg-slate-900 bg-opacity-70 backdrop-blur-sm z-50 hidden items-center justify-center">
+        <!-- Hago el contenedor blanco para mi ventana -->
+        <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-sm w-full mx-4 flex flex-col items-center text-center">
+            
+            <!-- Inserto un ícono de éxito -->
+            <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mb-5">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            
+            <h3 class="text-2xl font-black text-slate-900 mb-3">¡Solicitud Procesada!</h3>
+            
+            <!-- Preparo este espacio para inyectar mi texto dinámico con JS -->
+            <p id="textoModal" class="text-gray-600 text-sm mb-8 leading-relaxed">
+                <!-- Se inyecta con JS -->
+            </p>
+            
+            <!-- Pongo este botón para ejecutar el salto a la asignación -->
+            <button onclick="irAAsignacion()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all cursor-pointer">
+                Conocer a mi Asesor
+            </button>
+        </div>
+    </div>
+
+    <!-- Coloco mi pie de página del proyecto UAC asegurándome de que quede al fondo -->
+    <footer class="bg-slate-950 text-white px-10 py-6 mt-auto w-full">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+            <div>
+                <span class="font-bold text-white text-lg tracking-wide">Dwello</span>
+                <p class="mt-1">Proyecto Universitario UAC © 2026</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-orange-500 transition-colors">Aviso de Privacidad</a>
+                <a href="#" class="hover:text-orange-500 transition-colors">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hago mi script para validar las entradas y mostrar mi modal -->
+    <script>
+        function procesarSolicitud(evento) {
+            if(evento) {
+                evento.preventDefault();
+            }
+
+            // Recupero los datos que ingresó el cliente (Entradas)
+            let nombre = document.getElementById('nombreCliente').value;
+            let correo = document.getElementById('correoCliente').value;
+            let fecha = document.getElementById('fechaCliente').value;
+            let horario = document.getElementById('horarioCliente').value;
+            
+            let mensajeError = document.getElementById('mensajeError');
+            let modal = document.getElementById('miModalPersonalizado');
+            let textoModal = document.getElementById('textoModal');
+
+            // Valido que todos los campos requeridos estén llenos
+            if(nombre === "" || correo === "" || fecha === "" || horario === "") {
+                // Muestro mi mensaje de error en rojo
+                mensajeError.classList.remove('hidden');
+                mensajeError.classList.add('block');
+            } else {
+                // Oculto el mensaje de error si estaba visible
+                mensajeError.classList.add('hidden');
+                mensajeError.classList.remove('block');
+
+                // Construyo mi mensaje de salida con el correo resaltado
+                textoModal.innerHTML = `Los detalles de tu cita se enviarán a tu correo: <br><strong class="text-blue-600 text-base block mt-2 mb-2">${correo}</strong> El sistema ha verificado tus datos y a continuación te asignará un bróker oficial para el recorrido.`;
+                
+                // Muestro mi ventana modal modificando sus clases
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        // Creo esta función para que el botón de mi modal haga la redirección
+        function irAAsignacion() {
+            window.location.assign('asignacion.html');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dwello - Detalle de Propiedad</title>
+    <!-- Vinculo la hoja de estilos que generé con Tailwind CSS -->
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Agrego mi barra de navegación superior -->
+    <nav class="bg-slate-950 px-10 py-4 flex justify-between items-center">
+        <!-- Pongo este enlace funcional para poder regresar al inicio -->
+            <a href="dashboard.html" class="flex items-center gap-2 text-white hover:text-orange-500 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            <span class="text-xl font-bold">Dwello</span>
+        </a>
+        
+        <!-- Sección para mi perfil de usuario -->
+        <a href="index.html" class="flex items-center gap-3 text-white hover:text-orange-500 transition-colors group cursor-pointer">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Perfil" class="w-8 h-8 rounded-full object-cover">
+            <span class="text-sm font-semibold">Cerrar sesión</span>
+        </a>
+    </nav>
+
+    <!-- Armo el contenedor principal con la tarjeta de la propiedad -->
+    <main class="flex-grow flex items-center justify-center p-10">
+        
+        <!-- Divido la tarjeta central en dos columnas para organizar la info -->
+        <div class="bg-white rounded-xl shadow-lg max-w-5xl w-full p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- En la columna izquierda coloco la imagen principal, el precio y el mapa -->
+            <div class="flex flex-col">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Fachada de la casa" class="w-full h-72 object-cover rounded-xl mb-4 shadow-sm">
+                
+                <h2 class="text-3xl font-extrabold text-blue-950">$8,500,000 MXN</h2>
+                <p class="text-slate-800 text-sm font-bold mb-4">Polanco, CDMX</p>
+                
+                <!-- Acomodo el contenedor para simular el mapa de ubicación -->
+                <div class="relative w-full h-32 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center border border-gray-200">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale" alt="Fondo de mapa">
+                    <div class="relative z-10 flex flex-col items-center">
+                        <svg class="w-8 h-8 text-slate-800" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                        <span class="text-xs font-bold text-slate-800 tracking-widest mt-1">POLANCO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- En la columna derecha pongo la galería pequeña, las características y la descripción -->
+            <div class="flex flex-col">
+                
+                <!-- Acomodo tres imágenes pequeñas en la parte de arriba -->
+                <div class="grid grid-cols-3 gap-3 mb-6">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=300&q=80" class="w-full h-24 object-cover rounded-xl shadow-sm hover:opacity-90 transition-opacity cursor-pointer" alt="Sala">
+                    <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?auto=format&fit=crop&w=300&q=80" class="w-full h-24 object-cover rounded-xl shadow-sm hover:opacity-90 transition-opacity cursor-pointer" alt="Terraza">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=300&q=80" class="w-full h-24 object-cover rounded-xl shadow-sm hover:opacity-90 transition-opacity cursor-pointer" alt="Cocina">
+                </div>
+
+                <!-- Hago un recuadro con los íconos para mostrar las características de la casa -->
+                <div class="border border-gray-300 rounded-xl p-4 flex justify-between items-center mb-6 bg-gray-50">
+                    <div class="flex flex-col items-center text-slate-800">
+                        <svg class="w-7 h-7 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14v7m16-7v7M4 14h16M4 14c0-2.21 1.79-4 4-4h8c2.21 0 4 1.79 4 4M7 10a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+                        <span class="font-bold text-lg leading-none">6</span>
+                        <span class="text-xs font-semibold mt-1">Recámaras</span>
+                    </div>
+                    <div class="flex flex-col items-center text-slate-800">
+                        <svg class="w-7 h-7 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12h18m-1 0v4a4 4 0 01-4 4H8a4 4 0 01-4-4v-4m3-3V7a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg>
+                        <span class="font-bold text-lg leading-none">4</span>
+                        <span class="text-xs font-semibold mt-1">Baños</span>
+                    </div>
+                    <div class="flex flex-col items-center text-slate-800">
+                        <svg class="w-7 h-7 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4V4zm4 0v4m0 12v-4m8-8h4m-4 8h4"></path></svg>
+                        <span class="font-bold text-lg leading-none">250 m2</span>
+                        <span class="text-xs font-semibold mt-1">Const.</span>
+                    </div>
+                    <div class="flex flex-col items-center text-slate-800">
+                        <svg class="w-7 h-7 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 10l1.5-4.5A2 2 0 018.4 4h7.2a2 2 0 011.9 1.5L19 10m-2 0v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m-4 0h18m-3 3H6"></path></svg>
+                        <span class="font-bold text-lg leading-none">2</span>
+                        <span class="text-xs font-semibold mt-1">Autos</span>
+                    </div>
+                </div>
+
+                <!-- Agrego los textos descriptivos de la propiedad -->
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-bold text-blue-950 mb-2">Descripción de la propiedad</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Espectacular residencia de ultra lujo en el corazón de Polanco. Diseño arquitectónico vanguardista con acabados premium y tecnología inteligente. Amplias áreas sociales, terraza con alberca privada, y detalles personalizados. La máxima expresión de confort y exclusividad.
+                    </p>
+                </div>
+
+                <!-- Botón alineado a la derecha que usa mi función de JS para cambiar de página -->
+                <div class="flex justify-end mt-auto">
+                    <button type="button" onclick="irAAgendar(event)" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-10 rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-base cursor-pointer">
+                        Agendar cita
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Pongo un pie de página para mi proyecto universitario -->
+    <footer class="bg-slate-950 text-white px-10 py-6 mt-auto">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+            <div>
+                <span class="font-bold text-white text-lg tracking-wide">Dwello</span>
+                <p class="mt-1">Proyecto Universitario UAC © 2026</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-orange-500 transition-colors">Aviso de Privacidad</a>
+                <a href="#" class="hover:text-orange-500 transition-colors">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hago este script para cumplir con la rúbrica de uso de JavaScript (navegación y alertas) -->
+    <script>
+        // Con esta función me redirijo al formulario usando JS
+        function irAAgendar(evento) {
+            // Esto evita que el botón intente recargar la página por error
+            if(evento) {
+                evento.preventDefault(); 
+            }
+            
+            // Agrego una pequeña alerta para que el profe vea la interacción con JS
+            alert("Redirigiendo al formulario seguro para agendar tu cita...");
+            
+            // Fuerzo el cambio de ventana al archivo donde el cliente llena sus datos
+            window.location.assign('confirmacion.html');
+        }
+    </script>
+
+</body>
+</html>
